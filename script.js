@@ -166,7 +166,7 @@
 
 
 
-// =============== 4th try here i add the mirror effect ==============
+// =============== 4th try here i add the mirror effect and user can download the picture with a button ==============
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -176,6 +176,13 @@ const imageFileExtension = '.png';
 const numberOfFrames = 117; // Adjust this to the number of frames in your sequence.
 let currentFrame = 1;
 const frameRate = 24; // Frames per second (adjust this to slow down or speed up).
+
+
+// Add an event listener for the capture button
+const captureButton = document.getElementById('captureButton');
+captureButton.addEventListener('click', captureAndDownload);
+
+
 
 async function startCamera() {
     try {
@@ -194,22 +201,26 @@ function overlayImage() {
     imgFront.src = `${sequenceFolder}${currentFrame}${imageFileExtension}`;
 
     imgFront.onload = function () {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
+        // canvas.width = video.videoWidth;
+        // canvas.height = video.videoHeight;
+
+        canvas.height = 700;
+        canvas.width = 1024;
+
 
         ctx.save();
         ctx.scale(-1, 1); // Mirror effect: Flip the video horizontally.
         ctx.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
         ctx.restore();
         
-        const scaleFactor = 0.3;
+        const scaleFactor = 0.8;
         const hf = imgFront.height * scaleFactor;
         const wf = imgFront.width * scaleFactor;
         const hb = video.videoHeight;
         // const hb = imgBack.height;
         // const wb = imgBack.width;
 
-        ctx.drawImage(imgFront, 0, hb - hf, wf, hf);
+        ctx.drawImage(imgFront, -400,20, wf, hf);
 
         // Load the next frame
         currentFrame = (currentFrame % numberOfFrames) + 1;
@@ -221,6 +232,21 @@ function overlayImage() {
         // Use setTimeout to slow down the sequence.
         setTimeout(requestAnimationFrame(overlayImage), delay);
     };
+}
+
+function captureAndDownload() {
+    // Capture the current content of the canvas
+    const capturedImage = new Image();
+    console.log(capturedImage);
+    capturedImage.src = canvas.toDataURL('image/jpeg'); // You can choose the desired image format (e.g., 'image/png', 'image/jpeg')
+
+    // Create a download link for the captured image
+    const downloadLink = document.createElement('a');
+    downloadLink.href = capturedImage.src;
+    downloadLink.download = 'captured_image.jpg'; // Set the desired file name and extension
+
+    // Simulate a click on the download link to trigger the download
+    downloadLink.click();
 }
 
 startCamera().then(overlayImage);

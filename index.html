@@ -3,24 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camera Overlay</title>
+    <title>GP PhotoBooth</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         *{
             padding: 0;
             margin: 0;
         }
-        #videdo{
-            transform: rotateX('-1');
-        }
-        #canvas{
-            transform: rotateX('-1')
-        }
+        
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.5/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-    <video id="video" autoplay></video>
-    <canvas  id="canvas" style="position: absolute; top: 0; left: 0;"></canvas>
+<body >
+    <!-- <video id="video" autoplay></video>
+    <canvas  id="canvas" style="position: absolute; top: 0; left: 0; z-index: 100;"></canvas> -->
+    <!-- starting page -->
+    <div class="flex justify-center mx-auto relative" id="frontPage">
+        <div class=" rotate-90 h-full w-full">
+            <img src="bg_image.png" alt="" srcset="">
+        </div>
+        <div class=" absolute  frontBlur mt-4">
+            <div>
+                <h2 class="fontStyle text-center mt-4">AR PhotoBooth</h2>
+            </div>
+            <div class="flex justify-center items-center align-middle mt-20">
+                <h3 class="textStyle">Let's do something new</h3>
+            </div>
+            <div class="flex justify-center mt-20" >
+                <button class="btnDiv p-5" id="btn"><img src="camera_btn.png" alt="" srcset=""></button>
+            </div>
+        </div>
+    </div>
+    <section class="video_section relative hidden flex" id="video_section">
+        <video id="video" autoplay style="width: 1024px;height: 700px;"></video>
+        <canvas  id="canvas" style="position: absolute; top: 0; left: 0;"></canvas>
+        <button id="captureButton" class="btn btn-primary ms-[50px] mt-[250px] right-0">Capture</button>
+        <div class="flex justify-center  mt-10 mr-11">
+            <span class="countdown font-mono text-8xl">
+            <span id="countdown1" style="--value:10;"></span>
+            </span>
+        </div>
+        <!-- <img src="bg_image.png" alt="" srcset=""> -->
+    </section>
 
     <script src="script.js"></script>
+    <script src="style.js"></script>
 </body>
 </html>

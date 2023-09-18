@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR code</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.5/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    #qr-code {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 30px;
+      padding: 33px 0;
+    }
+ 
+    #Generate {
+      background-color: #3498db;
+      /* transition: height ease; */
+      padding: 20px;
+      border-radius: 2rem;
+      height: 300px;
+    }
+ 
+    @media screen and (max-width: 414px) {
+      #Generate {
+        height: 400px;
+      }
+    }
+  </style>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+  integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+
+</head>
+<body>
+    <div class="relative">
+        <div class="rotate-90 ">
+            <img src="bg_image.png" alt="" srcset="">
+        </div>
+        <div class="absolute top-0 left-[150px]">
+            <!-- Where the generated QR code will be. -->
+            <div id="qr-code" class="m-auto pt-[500px]"></div>
+        </div>
+    </div>
+    <script src="qrcode.js"></script>
+</body>
+</html>
