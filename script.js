@@ -169,6 +169,7 @@
 // =============== 4th try here i add the mirror effect and user can download the picture with a button ==============
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
+const qrCode = document.querySelector("#qr-code");
 const ctx = canvas.getContext('2d');
 
 const sequenceFolder = 'png/';
@@ -243,9 +244,9 @@ function dataURLtoFile(dataurl, filename) {
     return new File([u8arr], filename, {type:mime});
 }
 
-const qrCode = document.querySelector("#qr-code");
+
 // const url2 = 'https://xri.com.bd/AR?q=1';
-const url2 = 'https://arbooth.cyclic.cloud/image/625fea3c-c86b-414d-9bea-a2533c94527d'
+// const url2 = 'https://arbooth.cyclic.cloud/image/625fea3c-c86b-414d-9bea-a2533c94527d'
 
 function createQrCode(url){
     const qr = new QRCode(document.getElementById("qr-code"), {
@@ -257,15 +258,23 @@ function createQrCode(url){
     console.log(qr);
 
 }
-createQrCode(url2);
 
+// const videoSection = document.getElementById('video_section');
+const qrcodeSection = document.getElementById('qrcode-section');
+//generat QR code & show it
+function genQR(url){
+    videoSection.classList.add('hidden');
+    qrcodeSection.classList.remove('hidden');
+    const longUrl = "https://arbooth.cyclic.cloud/image/" + url;
+    createQrCode(longUrl);
+}
 function uploadImage(file){
     // Create a FormData object and append the image file to it
     const formData = new FormData();
     formData.append('image', file);
 
     // Make a POST request to the API
-    fetch('https://arbooth.cyclic.cloud/upload', {
+    fetch('https://dull-erin-caiman-vest.cyclic.cloud/upload', {
         method: 'POST',
         body: formData,
     })
@@ -278,6 +287,7 @@ function uploadImage(file){
         })
         .then((data) => {
         // Handle the API response here
+        // genQR(data.id);
         console.log('Image upload successful:', data);
         })
         .catch((error) => {
@@ -288,21 +298,21 @@ function uploadImage(file){
 
 function captureAndDownload() {
     // Capture the current content of the canvas
-    // const capturedImage = new Image();
+    const capturedImage = new Image();
     
     const srcValue = canvas.toDataURL('image/jpeg'); // You can choose the desired image format (e.g., 'image/png', 'image/jpeg')
-    // console.log(srcValue);
-    // capturedImage.src = srcValue;
+    console.log(srcValue);
+    capturedImage.src = srcValue;
     
     // Create a download link for the captured image
-    // const downloadLink = document.createElement('a');
-    // downloadLink.href = capturedImage.src;
-    // downloadLink.download = 'captured_image.jpg'; // Set the desired file name and extension
+    const downloadLink = document.createElement('a');
+    downloadLink.href = capturedImage.src;
+    downloadLink.download = 'captured_image.jpg'; // Set the desired file name and extension
 
     // Simulate a click on the download link to trigger the download
     // downloadLink.click();
     var file = dataURLtoFile(srcValue, 'filename.jpg');
-    console.log(file);
+    console.log("file details: ",file);
     uploadImage(file);
     
     
