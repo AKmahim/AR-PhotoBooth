@@ -11,7 +11,7 @@ mp_selfie_segmentation = mp.solutions.selfie_segmentation
 segmentation = mp_selfie_segmentation.SelfieSegmentation(model_selection=1)
 
 # Initialize the webcam
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(0)
 
 # Load the video to use as the background
 background_video = cv2.VideoCapture("gp.mp4")

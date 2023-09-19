@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,13 @@
       }
     }
   </script>
+
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+  integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
 </head>
 <body >
     <!-- <video id="video" autoplay></video>
@@ -56,6 +63,20 @@
             </span>
         </div>
         <!-- <img src="bg_image.png" alt="" srcset=""> -->
+    </section>
+    <section class="qrcode-section">
+        <div class="relative">
+            <div class="rotate-90 ">
+                <img src="bg_image.png" alt="" srcset="">
+            </div>
+            
+              <div class="absolute top-[100px] left-[450px] bg-white">
+                <!-- Where the generated QR code will be. -->
+                <div id="qr-code" class=""></div>
+              </div>
+              
+            </div>
+        </div>
     </section>
 
     <script src="script.js"></script>
