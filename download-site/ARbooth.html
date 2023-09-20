@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR PhotoBooth</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.6/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="arbooth.css">
+
+
+</head>
+<body>
+    <div class="">
+        <div class="flex justify-center mx-auto  relative bg-[url('bg_image.png')]" id="frontPage" >
+            
+            <div class="frontBlur mt-20 mb-20">
+                <div>
+                    <h2 class="fontStyle text-center">AR PhotoBooth</h2>
+                </div>
+                <div class="flex justify-center items-center align-middle mt-5">
+                    <h3 class="textStyle">Let's do something new</h3>
+                </div>
+                <div class="h-[300px] w-[200px] mt-7 text-center mx-auto">
+                    <img id="previewImg" src="" alt="" srcset="">
+                </div>
+                <div class="flex justify-center mb-10" >
+                    <a href="" class="btnDiv px-7 py-5" id="downloadBtn" style="display: none" download="AR-PhotoBooth.jpg"><img src="camera_btn.png" class="w-14 h-14" alt="" srcset=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ARbooth.js"></script>
+    
+</body>
+</html>
