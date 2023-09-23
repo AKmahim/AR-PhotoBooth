@@ -265,7 +265,7 @@ const qrcodeSection = document.getElementById('qrcode-section');
 function genQR(url){
     videoSection.classList.add('hidden');
     qrcodeSection.classList.remove('hidden');
-    const longUrl = "https://arbooth.cyclic.cloud/image/" + url;
+    const longUrl = "https:xri.com.bd/ARbooth.html?q=" + url;
     createQrCode(longUrl);
 }
 function uploadImage(file){
@@ -287,7 +287,7 @@ function uploadImage(file){
         })
         .then((data) => {
         // Handle the API response here
-        // genQR(data.id);
+        genQR(data.id);
         console.log('Image upload successful:', data);
         })
         .catch((error) => {
